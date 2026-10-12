@@ -1,0 +1,33 @@
+
+<View>
+  <Header value="LLM Response Preference Evaluation"/>
+
+  <Header value="Conversation Context"/>
+  <Text name="context" value="$context"/>
+
+  <Header value="User Prompt"/>
+  <Text name="prompt" value="$prompt"/>
+
+  <Header value="Response A"/>
+  <Text name="response_a" value="$response_a"/>
+
+  <Header value="Response B"/>
+  <Text name="response_b" value="$response_b"/>
+
+  <Header value="Which response is better?"/>
+  <Choices name="preference"
+           toName="prompt"
+           choice="single"
+           required="true">
+    <Choice value="A"/>
+    <Choice value="B"/>
+    <Choice value="Tie"/>
+  </Choices>
+
+  <Header value="Reason for your decision"/>
+  <TextArea name="reason"
+            toName="prompt"
+            rows="4"
+            required="true"
+            placeholder="Explain your preference using accuracy, relevance, clarity, and safety."/>
+</View>
