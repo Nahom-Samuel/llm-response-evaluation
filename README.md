@@ -64,6 +64,89 @@ The dataset contains subjective human preferences. The annotation interface also
 
 The sample includes sensitive and potentially offensive conversational content.
 
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Nahom-Samuel/llm-response-evaluation.git
+cd llm-response-evaluation
+```
+
+### 2. Create a virtual environment
+
+```bash
+uv venv
+```
+
+Activate it on Windows using Git Bash:
+
+```bash
+source .venv/Scripts/activate
+```
+
+### 3. Install dependencies
+
+```bash
+uv pip install -r requirements.txt
+```
+
+### 4. Prepare the dataset
+
+```bash
+python prepare_dataset.py
+```
+
+This downloads a small sample of the Anthropic HH-RLHF
+dataset and creates:
+
+- `data/annotation_tasks.json`
+- `data/answer_key.json`
+
+### 5. Start Label Studio
+
+```bash
+label-studio start
+```
+
+Open http://localhost:8080 in your browser.
+
+Create a new annotation project and configure a
+pairwise response evaluation interface with:
+
+- Conversation context
+- User prompt
+- Response A
+- Response B
+- Preference selection (A, B, Tie)
+- Written justification
+
+Import `data/annotation_tasks.json` and complete
+the evaluations.
+
+### 6. Export and analyze annotations
+
+Export the completed annotations from Label Studio
+in JSON format and save them as:
+
+`data/annotations.json`
+
+Run:
+
+```bash
+python analyze_annotations.py
+```
+
+The script extracts annotation preferences and
+compares them with the original dataset preferences.
+
+### Note
+
+The original preference labels are reference
+judgments rather than definitive ground truth.
+The dataset may contain sensitive or offensive content.
+
 ## Future Improvements
 
 - Expand to a larger, carefully curated evaluation sample.
