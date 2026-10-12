@@ -1,0 +1,26 @@
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# Environment variables
+.env
+.env.*
+
+# Label Studio local files
+.labelstudio/
+*.sqlite3
+
+# Raw evaluation data
+data/annotation_tasks.json
+data/answer_key.json
+data/annotations.json
+
+# System files
+.DS_Store
+Thumbs.db
